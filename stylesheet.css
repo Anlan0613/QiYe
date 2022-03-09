@@ -326,7 +326,7 @@ ruby[data-ruby]::before
     /* ルビの文字サイズを親文字に対する比率で指定 */
     transform: scale(0.5);
     /* 100%を越える部分が親文字とルビとのスペースになる。単位は親文字に対する比率 */
-    bottom: 85%;
+    bottom: 80%;
 }
 ruby[data-ruby] rt
 {
