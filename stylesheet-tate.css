@@ -47,6 +47,25 @@ a {
     color: #043c78;
 }
 
+/* コンテナ */
+#headerwrap {
+    margin: 0 auto;
+    padding: 5em 0;
+    background-color: #043c78;
+    color: #fff;
+}
+
+/* ヘッダー */
+header {
+    position: relative;
+}
+
+/* 画像 */
+header img {
+    width: 330px;
+    height: auto;
+}
+
 /* 見出し */
 header h1 {
     position: absolute;
@@ -60,12 +79,44 @@ header h1 {
     font-size: 1.5em;
 }
 
+header h1 span {
+    font-family: 'Noto Serif JP';
+    color: #fff;
+}
+
+header h1 span:nth-of-type(1) {
+    animation: FadeIn 2s;
+}
+
+header h1 span:nth-of-type(2) {
+    animation: FadeIn 3s;
+}
+
+header h1 span:nth-of-type(3) {
+    animation: FadeIn 4s;
+}
+
+header h1 span:nth-of-type(4) {
+    animation: FadeIn 5s;
+}
+
+/* 折り畳みボックス */
+#AboutToggle {
+    margin-top: 1em;
+}
+
+/* 折り畳みボックス段落 */
+#About p {
+    margin: 1em auto 1.5em;
+    width: 80%;
+    max-width: 400px;
+}
+
 /* 文字揃え */
+#About p,
+section,
 article {
-    writing-mode: vertical-rl;
-    text-align: left;
-    overflow-y: hidden;
-    display: inline-block;
+    text-align: justify;
     word-break: break-all;
 }
 
@@ -168,13 +219,26 @@ article .menu {
 
 article .menu li {
     display: inline-block;
-    margin: 1em 1em;
+    margin: 0 1em;
 }
 
 article .details {
     list-style:none;
     display: inline-block;
     margin: 0 1em;
+}
+
+
+/* フッター */
+footer {
+    margin: 1em auto 2em;
+    background-color: #fff;
+}
+
+/* 重要事項 */
+strong {
+    font-weight: bold;
+    color: red;
 }
 
 /* アニメーション */
@@ -186,6 +250,30 @@ article .details {
     100% {
         opacity: 1;
     }
+}
+
+/* フォーム系 */
+textarea,
+input[type] {
+    -webkit-appearance: none;
+    padding: 0.2em 0.5em;
+    background-color: #043c78;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+}
+
+textarea {
+    width: 200px;
+    height: 70px;
+}
+
+input[type=text] {
+    width: 80px;
+}
+
+input[type=submit] {
+    width: auto;
 }
 
 /* 横幅768px以上で読み込む */
@@ -218,7 +306,6 @@ article .details {
         flex-basis: 48%;
     }
 }
-
    body {
   -webkit-text-size-adjust: 100%;
 }
@@ -229,11 +316,21 @@ ruby[data-ruby]
 }
 ruby[data-ruby]::before
 {
-    display: none;
+    content: attr(data-ruby);
+    position: absolute;
+    line-height: 100%;
+    text-align: center;
+    left: -3em;
+    right: -3em;
+    transform-origin: bottom center;
+    /* ルビの文字サイズを親文字に対する比率で指定 */
+    transform: scale(0.5);
+    /* 100%を越える部分が親文字とルビとのスペースになる。単位は親文字に対する比率 */
+    bottom: 80%;
 }
 ruby[data-ruby] rt
 {
-    transform: scale(1.0);
+    display: none;
 }
 
 /* スクロールボックス */
