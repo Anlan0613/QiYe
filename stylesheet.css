@@ -25,19 +25,18 @@ http://ipafont.ipa.go.jp/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-weight: normal;
-  font-family: "Noto Serif JP", serif;
 }
 
 /* 基本設定 */
 body {
   text-align: center;
-  background: url("Blue.jpeg") top center;
-  background-size: 400px;
+  background: url("Blue.jpeg") top center/400px;
   line-height: 1.7;
   letter-spacing: 0.1em;
   font-size: 13px;
   color: #000;
+  font-weight: normal;
+  font-family: "Noto Serif JP", serif;
 }
 
 /* リンク */
@@ -192,6 +191,7 @@ article .flex {
   display: flex;
   padding: 10px;
 }
+
 article .flex div {
   width: 50%;
   margin: 10px;
@@ -244,35 +244,9 @@ strong {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
-}
-
-/* フォーム系 */
-textarea,
-input[type] {
-  appearance: none;
-  -webkit-appearance: none;
-  padding: 0.2em 0.5em;
-  background-color: #043c78;
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-}
-
-textarea {
-  width: 200px;
-  height: 70px;
-}
-
-input[type="text"] {
-  width: 80px;
-}
-
-input[type="submit"] {
-  width: auto;
 }
 
 /* 横幅768px以上で読み込む */
@@ -303,13 +277,17 @@ input[type="submit"] {
     flex-basis: 48%;
   }
 }
+
+/* 共通スタイル */
 body {
   -webkit-text-size-adjust: 100%;
 }
 
+/* ルビ */
 ruby[data-ruby] {
   position: relative;
 }
+
 ruby[data-ruby]::before {
   content: attr(data-ruby);
   position: absolute;
@@ -318,11 +296,10 @@ ruby[data-ruby]::before {
   left: -3em;
   right: -3em;
   transform-origin: bottom center;
-  /* ルビの文字サイズを親文字に対する比率で指定 */
   transform: scale(0.5);
-  /* 100%を越える部分が親文字とルビとのスペースになる。単位は親文字に対する比率 */
   bottom: 80%;
 }
+
 ruby[data-ruby] rt {
   display: none;
 }
