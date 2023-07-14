@@ -206,9 +206,23 @@ article h1 {
 }
 
 /* 段落 */
-article p,
+article p .normal,
 article .menu {
-  margin: 1em auto 1.5em;
+  margin: 1em auto;
+}
+
+article p.one {
+  margin-top: 1.7em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article p.two {
+  margin-top: 3.4em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* メニュー */
