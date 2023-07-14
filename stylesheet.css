@@ -206,7 +206,7 @@ article h1 {
 }
 
 /* 段落 */
-article p .normal,
+article p,
 article .menu {
   margin: 1em auto;
 }
