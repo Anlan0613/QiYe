@@ -225,6 +225,10 @@ article p.two {
   margin-right: auto;
 }
 
+article p span.alert {
+  text-decoration: underline;
+}
+
 /* メニュー */
 article .menu {
   text-align: center;
