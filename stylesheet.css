@@ -155,7 +155,7 @@ section ul li {
   list-style-type: none;
 }
 
-section ul li span {
+section ul li span.number {
   display: inline-block;
   margin-right: 1em;
   width: 40px;
