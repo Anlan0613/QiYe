@@ -30,7 +30,7 @@ http://ipafont.ipa.go.jp/
 /* 基本設定 */
 body {
   text-align: center;
-  background: url("Blue.jpeg") top center/400px;
+  background: url("img/Blue.jpeg") top center/400px;
   line-height: 1.7;
   letter-spacing: 0.1em;
   font-size: 13px;
