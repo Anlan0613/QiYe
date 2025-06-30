@@ -1,0 +1,46 @@
+name: Deploy static site to Gitee Pages
+
+on:
+  push:
+    branches:
+      - main  # 你的默认分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Gitee
+        env:
+          GITEE_REPO: ${{ secrets.GITEE_REPO }}
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          # 克隆 Gitee 仓库到 gitee_repo 目录
+          git clone https://oauth2:${GITEE_TOKEN}@gitee.com/${GITEE_REPO}.git gitee_repo
+          cd gitee_repo
+
+          # 清空 Gitee 仓库的内容
+          git rm -rf . || true
+
+          # 复制 GitHub 仓库的文件到 Gitee 仓库
+          cp -r ../* .
+
+          # 删除 Git 目录和 workflows 等不需要的文件
+          rm -rf .git .github
+
+          # 提交并推送
+          git add .
+          git commit -m "Auto deploy from GitHub Actions"
+          git push origin master
+
+      - name: Trigger Gitee Pages rebuild
+        env:
+          GITEE_REPO: ${{ secrets.GITEE_REPO }}
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          curl -X POST "https://gitee.com/api/v5/repos/${GITEE_REPO}/pages/builds" \
+            -H "Content-Type: application/json" \
+            -d "{\"access_token\": \"${GITEE_TOKEN}\"}"
